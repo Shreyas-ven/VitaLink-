@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import { createRequest } from "../services/requestService";
+import { useLocation } from "react-router-dom";
 const RequestOrgan = () => {
 
 
@@ -13,13 +14,57 @@ const RequestOrgan = () => {
 
     const [reason, setReason] = useState("");
 
+    const location = useLocation();
+
+    const organ = location.state?.organ;
+    console.log(organ);
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
 
-        e.preventDefault();
+    e.preventDefault();
 
-    };
+    try{
+
+        const requestData = {
+
+    organId: organ._id,
+
+    donorHospitalId:
+    organ.hospitalId._id,
+
+    requestingHospitalId:
+    localStorage.getItem("hospitalId"),
+
+    patientName,
+
+    patientAge,
+
+    bloodGroup,
+
+    urgencyLevel,
+
+    reason,
+
+};
+
+        const response = await createRequest(
+            requestData
+        );
+
+        alert(response.data.message);
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+        alert("Request Failed");
+
+    }
+
+};
 
 
     return (

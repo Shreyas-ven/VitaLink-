@@ -72,17 +72,17 @@ const AvailableOrgans = () => {
 </p>
 
 <button
+onClick={() => {
 
-onClick={() =>
+console.log(organ);
 
-navigate("/request-organ")
+navigate("/request-organ", {
+    state: { organ }
+});
 
-}
-
+}}
 >
-
 Request Organ
-
 </button>
                         <hr />
 
