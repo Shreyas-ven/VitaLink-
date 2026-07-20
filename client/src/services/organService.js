@@ -10,5 +10,15 @@ export const createOrgan = (organData) => {
         organData
 
     );
+};
+
+
+export const getAvailableOrgans = () => {
+
+    return axios.get(
+
+        "http://localhost:8000/api/organ/available-organs"
+
+    );
 
 };

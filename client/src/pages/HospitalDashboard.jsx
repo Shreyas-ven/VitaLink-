@@ -38,7 +38,13 @@ const HospitalDashboard = () => {
 
             <br /><br />
 
-            <button>Available Organs</button>
+            <button
+            onClick={() =>
+            navigate("/available-organs")
+            }
+            >
+            Available Organs
+            </button>
 
             <br /><br />
 

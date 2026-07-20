@@ -5,6 +5,7 @@ import HospitalRegister from "./pages/HospitalRegister";
 import HospitalLogin from "./pages/HospitalLogin";
 import HospitalDashboard from "./pages/HospitalDashboard";
 import PostOrgan from "./pages/PostOrgan";
+import AvailableOrgans from "./pages/AvailableOrgans";
 
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
         <Route path="/dashboard" element={<HospitalDashboard />}/>
 
         <Route path="/organ/post" element={<PostOrgan />} />
+
+        <Route path="/available-organs" element={<AvailableOrgans />}/>
       </Routes>
 
     </BrowserRouter>

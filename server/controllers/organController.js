@@ -52,7 +52,42 @@ const createOrgan = async (req, res) => {
 
 };
 
+const getAvailableOrgans = async (req, res) => {
+
+    try {
+
+        const organs = await Organ.find({
+    status: "Available",
+}).populate(
+    "hospitalId",
+    "hospitalName address"
+);
+
+        res.status(200).send({
+
+            success: true,
+            organs,
+
+        });
+
+    } catch (error) {
+
+        console.log(error);
+
+        res.status(500).send({
+
+            success: false,
+            message: "Error while fetching organs",
+
+        });
+
+    }
+
+};
+
+
 
 module.exports = {
     createOrgan,
+    getAvailableOrgans,
 };
