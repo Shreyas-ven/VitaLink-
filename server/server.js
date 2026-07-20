@@ -26,3 +26,12 @@ app.listen(PORT, () => {
 
 const organRoutes = require("./routes/organRoutes");
 app.use("/api/organ", organRoutes);
+
+const requestRoutes = require(
+    "./routes/requestRoutes"
+);
+
+app.use(
+    "/api/request",
+    requestRoutes
+);

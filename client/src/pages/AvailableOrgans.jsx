@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 
 import { getAvailableOrgans }
-
 from "../services/organService";
+
+import { useNavigate } from "react-router-dom";
 
 
 const AvailableOrgans = () => {
 
     const [organs, setOrgans] = useState([]);
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -69,7 +71,22 @@ const AvailableOrgans = () => {
     {organ.hospitalId.address}
 </p>
 
+<button
+
+onClick={() =>
+
+navigate("/request-organ")
+
+}
+
+>
+
+Request Organ
+
+</button>
                         <hr />
+
+                        
 
                     </div>
 
