@@ -49,6 +49,7 @@ const AvailableOrgans = () => {
             {
 
                 organs.map((organ) => (
+                    
 
                     <div key={organ._id}>
 

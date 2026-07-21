@@ -34,8 +34,59 @@ const createRequest = async (req, res) => {
 };
 
 
+
+const getMyRequests = async (req, res) => {
+
+    try {
+
+        const hospitalId = req.params.hospitalId;
+
+        const requests = await Request.find({
+
+            requestingHospitalId: hospitalId,
+
+        })
+
+        .populate("organId", "organName bloodGroup")
+
+        .populate("donorHospitalId",
+            "hospitalName address");
+
+
+
+        res.status(200).send({
+
+            success: true,
+            requests,
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.log(error);
+
+        res.status(500).send({
+
+            success: false,
+            message: "Error while fetching requests",
+
+        });
+
+    }
+
+};
+
+
+
+
+
+
+
 module.exports = {
 
     createRequest,
+    getMyRequests,
 
 };

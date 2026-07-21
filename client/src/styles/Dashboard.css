@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+.dashboard-container{
+    min-height: 100vh;
+    background: #f4f9ff;
+    padding: 40px;
+}
+
+
+/* Header */
+
+.dashboard-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.dashboard-title h1{
+    color: #0077ff;
+    font-size: 34px;
+}
+
+.dashboard-title p{
+    margin-top: 8px;
+    color: #555;
+}
+
+.logout-btn{
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    background: crimson;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.logout-btn:hover{
+    transform: translateY(-2px);
+}
+
+
+
+/* Dashboard Cards */
+
+.dashboard-grid{
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(260px,1fr));
+
+    gap: 25px;
+}
+
+
+.dashboard-card{
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.08);
+
+    transition: 0.3s;
+
+    cursor: pointer;
+
+}
+
+
+.dashboard-card:hover{
+
+    transform: translateY(-8px);
+
+}
+
+
+.dashboard-card h3{
+
+    color: #003366;
+
+    margin-bottom: 15px;
+
+    font-size: 22px;
+
+}
+
+
+.dashboard-card p{
+
+    color: #666;
+
+    line-height: 1.6;
+
+    margin-bottom: 20px;
+
+}
+
+
+.dashboard-card button{
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #0077ff;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+.dashboard-card button:hover{
+
+    background: #005fd6;
+
+}

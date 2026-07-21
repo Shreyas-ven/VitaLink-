@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import "../styles/Dashboard.css";
 
 const HospitalDashboard = () => {
 
@@ -24,52 +25,137 @@ const HospitalDashboard = () => {
 
     return (
 
-        <div>
+<div className="dashboard-container">
 
-            <h1>Hospital Dashboard</h1>
+    <div className="dashboard-header">
 
-            <h3>Welcome to VITALINK</h3>
+        <div className="dashboard-title">
+            <h1>VITALINK</h1>
+            <p>Hospital Management Dashboard</p>
+        </div>
 
-            <hr />
+        <button
+            className="logout-btn"
+            onClick={handleLogout}
+        >
+            Logout
+        </button>
 
-            <button onClick={() => navigate("/organ/post")}>
-                Post Available Organ
-            </button>
+    </div>
 
-            <br /><br />
+
+    <div className="dashboard-grid">
+
+        <div className="dashboard-card">
+
+            <h3>Post Organ</h3>
+
+            <p>
+                Add newly available organs for donation.
+            </p>
 
             <button
-            onClick={() =>
-            navigate("/available-organs")
-            }
+                onClick={() =>
+                navigate("/organ/post")
+                }
             >
-            Available Organs
-            </button>
-
-            <br /><br />
-
-            <button>Request Organ</button>
-
-            <br /><br />
-
-            <button>My Requests</button>
-
-            <br /><br />
-
-            <button>Notifications</button>
-
-            <br /><br />
-
-            <button>Blood Management</button>
-
-            <br /><br />
-
-            <button onClick={handleLogout}>
-                Logout
+                Open
             </button>
 
         </div>
-    );
+
+
+        <div className="dashboard-card">
+
+            <h3>Available Organs</h3>
+
+            <p>
+                View all organs available across hospitals.
+            </p>
+
+            <button
+                onClick={() =>
+                navigate("/available-organs")
+                }
+            >
+                Open
+            </button>
+
+        </div>
+
+
+        <div className="dashboard-card">
+
+            <h3>Request Organ</h3>
+
+            <p>
+                Send organ requests to donor hospitals.
+            </p>
+
+            <button>
+                Open
+            </button>
+
+        </div>
+
+
+
+        <div className="dashboard-card">
+
+            <h3>My Requests</h3>
+
+            <p>
+                Check the status of all your requests.
+            </p>
+
+            <button
+                onClick={() =>
+                navigate("/my-requests")
+                }
+            >
+                Open
+            </button>
+
+        </div>
+
+
+
+        <div className="dashboard-card">
+
+            <h3>Notifications</h3>
+
+            <p>
+                View emergency and hospital notifications.
+            </p>
+
+            <button>
+                Open
+            </button>
+
+        </div>
+
+
+
+        <div className="dashboard-card">
+
+            <h3>Blood Management</h3>
+
+            <p>
+                Manage blood requirements and availability.
+            </p>
+
+            <button>
+                Open
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+);
 };
 
 export default HospitalDashboard;

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { loginHospital } from "../services/hospitalService";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import "../styles/Login.css";
+
 
 const HospitalLogin = () => {
 
@@ -50,46 +52,74 @@ localStorage.setItem(
 
     return (
 
-        <div>
+<div className="login-container">
 
-            <h1>VITALINK</h1>
-            <h2>Hospital Login</h2>
 
-            <form onSubmit={handleSubmit}>
+    <div className="login-card">
 
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
 
-                <br /><br />
+        <h1>VITALINK</h1>
 
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+        <h2>Hospital Login</h2>
 
-                <br /><br />
 
-                <button type="submit">
-                    Login
-                </button>
 
-                <p>Don't have an account?</p>
+        <form 
+            onSubmit={handleSubmit}
+            className="login-form"
+        >
 
-<Link to="/register">
-    Register Here
-</Link>
 
-            </form>
+            <input
+                type="email"
+                placeholder="Email Address"
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
+            />
 
-        </div>
 
-    );
+
+            <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e)=>setPassword(e.target.value)}
+            />
+
+
+
+            <button 
+                type="submit"
+                className="login-btn"
+            >
+                Login
+            </button>
+
+
+        </form>
+
+
+
+        <p className="register-text">
+            Don't have an account?
+        </p>
+
+
+        <Link 
+            to="/register"
+            className="register-link"
+        >
+            Register Here
+        </Link>
+
+
+
+    </div>
+
+
+</div>
+
+);
 };
 
 export default HospitalLogin;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { registerHospital } from "../services/hospitalService";
 import { Link } from "react-router-dom";
+import "../styles/Register.css";
 
 const HospitalRegister = () => {
 
@@ -72,80 +73,98 @@ catch (error) {
 
 };
   return (
-    
-    <div>
-      <h1>VITALINK</h1>
-      <h2>Hospital Registration</h2>
 
-      <form onSubmit={handleSubmit}>
+<div className="register-container">
 
-        <input
-          type="text"
-          placeholder="Hospital Name"
-          value={hospitalName}
-          onChange={(e) => setHospitalName(e.target.value)}
-        />
+    <div className="register-card">
 
-        <br /><br />
+        <h1>VITALINK</h1>
+        <h2>Hospital Registration</h2>
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <form
+            onSubmit={handleSubmit}
+            className="register-form"
+        >
 
-        <br /><br />
+            <input
+                type="text"
+                placeholder="Hospital Name"
+                value={hospitalName}
+                onChange={(e) =>
+                    setHospitalName(e.target.value)
+                }
+            />
 
-        <input
-          type="text"
-          placeholder="Phone Number"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-        />
+            <input
+                type="email"
+                placeholder="Email Address"
+                value={email}
+                onChange={(e) =>
+                    setEmail(e.target.value)
+                }
+            />
 
-        <br /><br />
+            <input
+                type="text"
+                placeholder="Phone Number"
+                value={phone}
+                onChange={(e) =>
+                    setPhone(e.target.value)
+                }
+            />
 
-        <input
-          type="text"
-          placeholder="Address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
+            <input
+                type="text"
+                placeholder="Hospital Address"
+                value={address}
+                onChange={(e) =>
+                    setAddress(e.target.value)
+                }
+            />
 
-        <br /><br />
+            <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) =>
+                    setPassword(e.target.value)
+                }
+            />
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+            <input
+                type="password"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) =>
+                    setConfirmPassword(e.target.value)
+                }
+            />
 
-        <br /><br />
+            <button
+                type="submit"
+                className="register-btn"
+            >
+                Register Hospital
+            </button>
 
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
+        </form>
 
-        <br /><br />
+        <p className="login-text">
+            Already have an account?
+        </p>
 
-        <button type="submit">
-    Register
-</button>
+        <Link
+            to="/login"
+            className="login-link"
+        >
+            Login Here
+        </Link>
 
-<p>Already have an account?</p>
-
-<Link to="/login">
-    Login Here
-</Link>
-
-      </form>
     </div>
-  );
+
+</div>
+
+);
 };
 
 export default HospitalRegister;

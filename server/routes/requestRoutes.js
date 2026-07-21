@@ -2,7 +2,8 @@ const express = require("express");
 
 const {
 
-    createRequest
+    createRequest,
+    getMyRequests,
 
 } = require("../controllers/requestController");
 
@@ -14,6 +15,14 @@ router.post(
     "/create-request",
     createRequest
 );
+router.get(
+
+"/my-requests/:hospitalId",
+
+getMyRequests
+
+);
+
 
 
 module.exports = router;

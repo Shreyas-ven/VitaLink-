@@ -11,3 +11,15 @@ export const createRequest = (requestData) => {
     );
 
 };
+
+
+
+export const getMyRequests = (hospitalId) => {
+
+    return axios.get(
+
+        `http://localhost:8000/api/request/my-requests/${hospitalId}`
+
+    );
+
+};
