@@ -1,157 +1,238 @@
 import { useState } from "react";
 import { createRequest } from "../services/requestService";
 import { useLocation } from "react-router-dom";
+import "../styles/RequestOrgan.css";
+
 const RequestOrgan = () => {
 
-
     const [patientName, setPatientName] = useState("");
-
     const [patientAge, setPatientAge] = useState("");
-
     const [bloodGroup, setBloodGroup] = useState("");
-
     const [urgencyLevel, setUrgencyLevel] = useState("");
-
     const [reason, setReason] = useState("");
 
     const location = useLocation();
-
     const organ = location.state?.organ;
-    console.log(organ);
+
+    // Toast Notification State
+    const [toast, setToast] = useState({
+        show: false,
+        message: "",
+        type: "",
+    });
+
+    // Function to display toast
+    const showToast = (message, type) => {
+
+        setToast({
+            show: true,
+            message,
+            type,
+        });
+
+        setTimeout(() => {
+            setToast({
+                show: false,
+                message: "",
+                type: "",
+            });
+        }, 5000);
+
+    };
 
 
     const handleSubmit = async (e) => {
 
-    e.preventDefault();
-    
-    try{
+        e.preventDefault();
 
-        const requestData = {
+        try {
 
-    organId: organ._id,
+            const requestData = {
 
-    donorHospitalId:
-    organ.hospitalId._id,
+                organId: organ._id,
 
-    requestingHospitalId:
-    localStorage.getItem("hospitalId"),
+                donorHospitalId:
+                    organ.hospitalId._id,
 
-    patientName,
+                requestingHospitalId:
+                    localStorage.getItem("hospitalId"),
 
-    patientAge,
+                patientName,
 
-    bloodGroup,
+                patientAge,
 
-    urgencyLevel,
+                bloodGroup,
 
-    reason,
+                urgencyLevel,
 
-};
+                reason,
 
-        const response = await createRequest(
-            requestData
-        );
+            };
 
-        alert(response.data.message);
+            const response = await createRequest(requestData);
 
-    }
+            // Success Toast
+            showToast(
+                response.data.message,
+                "success"
+            );
 
-    catch(error){
+            // Clear the form fields
+            setPatientName("");
+            setPatientAge("");
+            setBloodGroup("");
+            setUrgencyLevel("");
+            setReason("");
 
-        console.log(error);
+        }
 
-        alert("Request Failed");
+        catch (error) {
 
-    }
+            console.log(error);
 
-};
+            // Error Toast
+            showToast(
+                "Request Failed",
+                "error"
+            );
+
+        }
+
+    };
 
 
     return (
 
-        <div>
+        <div className="request-container">
 
-            <h1>Organ Request Form</h1>
+            <div className="request-card">
 
-            <form onSubmit={handleSubmit}>
+                <h1>Organ Request Form</h1>
 
-                <input
+                <div className="organ-info">
 
-                    type="text"
-                    placeholder="Patient Name"
-                    value={patientName}
-                    onChange={(e) =>
-                        setPatientName(e.target.value)
-                    }
+                    <h3>Selected Organ Details</h3>
 
-                />
+                    <p>
+                        <strong>Organ:</strong>{" "}
+                        {organ.organName}
+                    </p>
 
-                <br /><br />
+                    <p>
+                        <strong>Blood Group:</strong>{" "}
+                        {organ.bloodGroup}
+                    </p>
 
-                <input
+                    <p>
+                        <strong>Hospital:</strong>{" "}
+                        {organ.hospitalId.hospitalName}
+                    </p>
 
-                    type="number"
-                    placeholder="Patient Age"
-                    value={patientAge}
-                    onChange={(e) =>
-                        setPatientAge(e.target.value)
-                    }
+                    <p>
+                        <strong>Location:</strong>{" "}
+                        {organ.hospitalId.address}
+                    </p>
 
-                />
-
-                <br /><br />
-
-
-                <input
-
-                    type="text"
-                    placeholder="Blood Group"
-                    value={bloodGroup}
-                    onChange={(e) =>
-                        setBloodGroup(e.target.value)
-                    }
-
-                />
-
-                <br /><br />
+                </div>
 
 
-                <input
+                <form
+                    onSubmit={handleSubmit}
+                    className="request-form"
+                >
 
-                    type="text"
-                    placeholder="Urgency Level"
-                    value={urgencyLevel}
-                    onChange={(e) =>
-                        setUrgencyLevel(e.target.value)
-                    }
-
-                />
-
-                <br /><br />
-
-
-                <textarea
-
-                    placeholder="Reason"
-
-                    value={reason}
-
-                    onChange={(e) =>
-                        setReason(e.target.value)
-                    }
-
-                />
-
-                <br /><br />
+                    <input
+                        type="text"
+                        placeholder="Patient Name"
+                        value={patientName}
+                        onChange={(e) =>
+                            setPatientName(e.target.value)
+                        }
+                    />
 
 
-                <button type="submit">
+                    <input
+                        type="number"
+                        placeholder="Patient Age"
+                        value={patientAge}
+                        onChange={(e) =>
+                            setPatientAge(e.target.value)
+                        }
+                    />
 
-                    Send Request
 
-                </button>
+                    <input
+                        type="text"
+                        placeholder="Blood Group"
+                        value={bloodGroup}
+                        onChange={(e) =>
+                            setBloodGroup(e.target.value)
+                        }
+                    />
 
-            </form>
+
+                    <select
+                        value={urgencyLevel}
+                        onChange={(e) =>
+                            setUrgencyLevel(e.target.value)
+                        }
+                    >
+
+                        <option value="">
+                            Select Urgency Level
+                        </option>
+
+                        <option value="Low">
+                            Low
+                        </option>
+
+                        <option value="Medium">
+                            Medium
+                        </option>
+
+                        <option value="High">
+                            High
+                        </option>
+
+                        <option value="Critical">
+                            Critical
+                        </option>
+
+                    </select>
+
+
+                    <textarea
+                        placeholder="Reason for Organ Requirement"
+                        value={reason}
+                        onChange={(e) =>
+                            setReason(e.target.value)
+                        }
+                    />
+
+
+                    <button
+                        type="submit"
+                        className="send-request-btn"
+                    >
+                        Send Request
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            {/* Toast Notification */}
+
+            {toast.show && (
+
+                <div
+                    className={`toast ${toast.type}`}
+                >
+                    {toast.message}
+                </div>
+
+            )}
 
         </div>
 

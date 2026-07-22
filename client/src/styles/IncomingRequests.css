@@ -7,108 +7,104 @@
     font-family:'Montserrat',sans-serif;
 }
 
-.available-container{
+.incoming-container{
     min-height:100vh;
     background:#f4f9ff;
     padding:40px;
 }
 
-
-.available-title{
+.incoming-title{
     text-align:center;
     color:#0077ff;
-    margin-bottom:40px;
     font-size:38px;
+    margin-bottom:40px;
 }
 
-
-.organs-grid{
+.requests-grid{
     display:grid;
     grid-template-columns:
-    repeat(auto-fit,minmax(320px,1fr));
-
+    repeat(auto-fit,minmax(340px,1fr));
     gap:30px;
 }
 
-
-.organ-card{
-
+.request-card{
     background:white;
-
     padding:30px;
-
     border-radius:20px;
-
     box-shadow:
-    0 10px 25px rgba(0,0,0,0.08);
-
+        0 10px 25px rgba(0,0,0,0.08);
     transition:0.3s;
 }
 
-
-.organ-card:hover{
-
+.request-card:hover{
     transform:translateY(-8px);
-
 }
 
-
-.organ-card h3{
-
+.request-card h3{
     color:#003366;
     margin-bottom:20px;
-    font-size:26px;
-
+    font-size:24px;
 }
 
-
-.organ-card p{
-
+.request-card p{
     margin-bottom:10px;
     color:#555;
     line-height:1.6;
-
 }
 
-
-.request-btn{
-
+.button-group{
     margin-top:20px;
+    display:flex;
+    gap:15px;
+}
 
-    width:100%;
-
-    padding:14px;
-
+.accept-btn,
+.reject-btn{
+    flex:1;
+    padding:12px;
     border:none;
-
-    border-radius:12px;
-
-    background:#0077ff;
-
+    border-radius:10px;
     color:white;
-
-    font-size:15px;
-
-    font-weight:600;
-
     cursor:pointer;
-
+    font-weight:600;
     transition:0.3s;
-
 }
 
-
-.request-btn:hover{
-
-    background:#005fd6;
-
+.accept-btn{
+    background:#28a745;
 }
 
+.accept-btn:hover{
+    background:#1e7e34;
+}
 
-.no-organs{
+.reject-btn{
+    background:#dc3545;
+}
 
+.reject-btn:hover{
+    background:#bd2130;
+}
+
+.status{
+    font-weight:700;
+}
+
+.status.pending{
+    color:orange;
+}
+
+.status.accepted{
+    color:green;
+}
+
+.status.rejected{
+    color:red;
+}
+
+.no-requests{
     text-align:center;
     font-size:20px;
     color:#666;
-
+    margin-top:50px;
 }

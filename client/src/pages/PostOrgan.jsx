@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { createOrgan } from "../services/organService";
+import "../styles/PostOrgan.css";
+
 
 const PostOrgan = () => {
   const [organName, setOrganName] = useState("");
@@ -44,97 +46,157 @@ catch(error){
   };
 
   return (
-    <div>
-      <h1>POST AVAILABLE ORGAN</h1>
 
-      <form onSubmit={handleSubmit}>
-        <select
-          value={organName}
-          onChange={(e) => setOrganName(e.target.value)}
+<div className="post-organ-container">
+
+    <div className="post-organ-card">
+
+        <h1>POST ORGAN</h1>
+
+        <p>
+            Add organ donation details securely.
+        </p>
+
+
+        <form
+            onSubmit={handleSubmit}
+            className="organ-form"
         >
-          <option value="">Select Organ</option>
-          <option value="Kidney">Kidney</option>
-          <option value="Liver">Liver</option>
-          <option value="Heart">Heart</option>
-          <option value="Lungs">Lungs</option>
-          <option value="Pancreas">Pancreas</option>
-          <option value="Cornea">Cornea</option>
-        </select>
 
-        <br />
-        <br />
+            <select
+                value={organName}
+                onChange={(e) =>
+                setOrganName(e.target.value)}
+            >
 
-        <select
-          value={bloodGroup}
-          onChange={(e) => setBloodGroup(e.target.value)}
-        >
-          <option value="">Select Blood Group</option>
-          <option value="A+">A+</option>
-          <option value="A-">A-</option>
-          <option value="B+">B+</option>
-          <option value="B-">B-</option>
-          <option value="AB+">AB+</option>
-          <option value="AB-">AB-</option>
-          <option value="O+">O+</option>
-          <option value="O-">O-</option>
-        </select>
+                <option value="">
+                    Select Organ
+                </option>
 
-        <br />
-        <br />
+                <option value="Kidney">
+                    Kidney
+                </option>
 
-        <input
-          type="number"
-          placeholder="Donor Age"
-          value={donorAge}
-          onChange={(e) => setDonorAge(e.target.value)}
-        />
+                <option value="Liver">
+                    Liver
+                </option>
 
-        <br />
-        <br />
+                <option value="Heart">
+                    Heart
+                </option>
 
-        <select
-          value={donorGender}
-          onChange={(e) => setDonorGender(e.target.value)}
-        >
-          <option value="">Select Gender</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Other">Other</option>
-        </select>
+                <option value="Lungs">
+                    Lungs
+                </option>
 
-        <br />
-        <br />
+                <option value="Pancreas">
+                    Pancreas
+                </option>
 
-        <label>Retrieval Time</label>
+                <option value="Cornea">
+                    Cornea
+                </option>
 
-        <br />
+            </select>
 
-        <input
-          type="datetime-local"
-          value={retrievalTime}
-          onChange={(e) => setRetrievalTime(e.target.value)}
-        />
 
-        <br />
-        <br />
 
-        <label>Expiry Time</label>
+            <select
+                value={bloodGroup}
+                onChange={(e) =>
+                setBloodGroup(e.target.value)}
+            >
 
-        <br />
+                <option value="">
+                    Select Blood Group
+                </option>
 
-        <input
-          type="datetime-local"
-          value={expiryTime}
-          onChange={(e) => setExpiryTime(e.target.value)}
-        />
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
 
-        <br />
-        <br />
+            </select>
 
-        <button type="submit">Submit</button>
-      </form>
+
+
+            <input
+                type="number"
+                placeholder="Donor Age"
+                value={donorAge}
+                onChange={(e)=>
+                setDonorAge(e.target.value)}
+            />
+
+
+            <select
+                value={donorGender}
+                onChange={(e)=>
+                setDonorGender(e.target.value)}
+            >
+
+                <option value="">
+                    Select Gender
+                </option>
+
+                <option value="Male">
+                    Male
+                </option>
+
+                <option value="Female">
+                    Female
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+
+
+            <label>
+                Retrieval Time
+            </label>
+
+            <input
+                type="datetime-local"
+                value={retrievalTime}
+                onChange={(e)=>
+                setRetrievalTime(e.target.value)}
+            />
+
+
+            <label>
+                Expiry Time
+            </label>
+
+            <input
+                type="datetime-local"
+                value={expiryTime}
+                onChange={(e)=>
+                setExpiryTime(e.target.value)}
+            />
+
+
+            <button
+                type="submit"
+                className="submit-organ-btn"
+            >
+                Submit Organ Details
+            </button>
+
+        </form>
+
     </div>
-  );
+
+</div>
+
+);
 };
 
 export default PostOrgan;

@@ -4,7 +4,7 @@ import { getAvailableOrgans }
 from "../services/organService";
 
 import { useNavigate } from "react-router-dom";
-
+import "../styles/AvailableOrgans.css";
 
 const AvailableOrgans = () => {
 
@@ -40,64 +40,116 @@ const AvailableOrgans = () => {
 
     return (
 
-        <div>
+<div className="available-container">
 
-            <h1>Available Organs</h1>
+    <h1 className="available-title">
+        Available Organs
+    </h1>
 
-            <hr />
 
-            {
+    {
 
-                organs.map((organ) => (
-                    
+        organs.length === 0 ?
 
-                    <div key={organ._id}>
+        (
 
-                        <h3>{organ.organName}</h3>
+            <p className="no-organs">
+                No organs available at the moment.
+            </p>
 
-                        <p>Blood Group : {organ.bloodGroup}</p>
+        )
 
-                        <p>Donor Age : {organ.donorAge}</p>
+        :
 
-                        <p>Gender : {organ.donorGender}</p>
+        (
 
-                        <p>Status : {organ.status}</p>
-                        <p>
-    Hospital Name :
-    {organ.hospitalId.hospitalName}
-</p>
+            <div className="organs-grid">
 
-<p>
-    Location :
-    {organ.hospitalId.address}
-</p>
+                {
 
-<button
-onClick={() => {
+                    organs.map((organ) => (
 
-console.log(organ);
+                        <div
+                            className="organ-card"
+                            key={organ._id}
+                        >
 
-navigate("/request-organ", {
-    state: { organ }
-});
+                            <h3>
+                                {organ.organName}
+                            </h3>
 
-}}
->
-Request Organ
-</button>
-                        <hr />
+                            <p>
+                                <strong>Blood Group:</strong>
+                                {" "}
+                                {organ.bloodGroup}
+                            </p>
 
-                        
+                            <p>
+                                <strong>Donor Age:</strong>
+                                {" "}
+                                {organ.donorAge}
+                            </p>
 
-                    </div>
+                            <p>
+                                <strong>Gender:</strong>
+                                {" "}
+                                {organ.donorGender}
+                            </p>
 
-                ))
+                            <p>
+                                <strong>Status:</strong>
+                                {" "}
+                                {organ.status}
+                            </p>
 
-            }
+                            <p>
+                                <strong>Hospital:</strong>
+                                {" "}
+                                {organ.hospitalId.hospitalName}
+                            </p>
 
-        </div>
+                            <p>
+                                <strong>Location:</strong>
+                                {" "}
+                                {organ.hospitalId.address}
+                            </p>
 
-    );
+
+                            <button
+                                className="request-btn"
+
+                                onClick={() =>
+                                navigate(
+                                    "/request-organ",
+                                    {
+                                        state:
+                                        {
+                                            organ
+                                        }
+                                    }
+                                )}
+
+                            >
+
+                                Request Organ
+
+                            </button>
+
+                        </div>
+
+                    ))
+
+                }
+
+            </div>
+
+        )
+
+    }
+
+</div>
+
+);
 
 };
 

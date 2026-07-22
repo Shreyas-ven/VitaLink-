@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Montserrat',sans-serif;
+}
+
+.post-organ-container{
+    min-height:100vh;
+    background:#f4f9ff;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:40px;
+}
+
+
+.post-organ-card{
+
+    width:550px;
+    background:white;
+
+    padding:40px;
+
+    border-radius:25px;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,0.08);
+
+}
+
+
+.post-organ-card h1{
+
+    text-align:center;
+
+    color:#0077ff;
+
+    font-size:32px;
+
+    margin-bottom:10px;
+
+}
+
+
+.post-organ-card p{
+
+    text-align:center;
+
+    color:#666;
+
+    margin-bottom:30px;
+
+}
+
+
+.organ-form{
+
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+
+}
+
+
+.organ-form input,
+.organ-form select{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+    outline:none;
+
+    border-radius:12px;
+
+    background:#f3f7fb;
+
+    border:2px solid transparent;
+
+    font-size:15px;
+
+    transition:0.3s;
+
+}
+
+
+.organ-form input:focus,
+.organ-form select:focus{
+
+    border-color:#0077ff;
+
+    background:white;
+
+}
+
+
+.organ-form label{
+
+    font-weight:600;
+
+    color:#003366;
+
+    margin-top:5px;
+
+}
+
+
+.submit-organ-btn{
+
+    margin-top:15px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#0077ff;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+}
+
+
+.submit-organ-btn:hover{
+
+    background:#005fd6;
+
+    transform:translateY(-2px);
+
+}
+
+
+@media(max-width:650px){
+
+    .post-organ-card{
+
+        width:100%;
+        padding:30px;
+
+    }
+
+}

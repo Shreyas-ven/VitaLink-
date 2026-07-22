@@ -86,13 +86,16 @@ const HospitalDashboard = () => {
 
         <div className="dashboard-card">
 
-            <h3>Request Organ</h3>
+            <h3>Incoming Requests</h3>
 
             <p>
                 Send organ requests to donor hospitals.
             </p>
 
-            <button>
+            <button
+onClick={()=>navigate("/incoming-requests")}
+>
+
                 Open
             </button>
 

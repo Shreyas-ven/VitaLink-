@@ -23,3 +23,38 @@ export const getMyRequests = (hospitalId) => {
     );
 
 };
+
+
+export const getIncomingRequests=(hospitalId)=>{
+
+return axios.get(
+
+`http://localhost:8000/api/request/incoming/${hospitalId}`
+
+);
+
+};
+
+
+
+export const acceptRequest=(id)=>{
+
+return axios.put(
+
+`http://localhost:8000/api/request/accept/${id}`
+
+);
+
+};
+
+
+
+export const rejectRequest=(id)=>{
+
+return axios.put(
+
+`http://localhost:8000/api/request/reject/${id}`
+
+);
+
+};

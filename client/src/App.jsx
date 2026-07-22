@@ -8,6 +8,7 @@ import PostOrgan from "./pages/PostOrgan";
 import AvailableOrgans from "./pages/AvailableOrgans";
 import RequestOrgan from "./pages/RequestOrgan";
 import MyRequests from "./pages/MyRequests";
+import IncomingRequests from "./pages/IncomingRequests";
 
 function App() {
   return (
@@ -31,6 +32,8 @@ function App() {
         <Route path="/request-organ" element={<RequestOrgan />}/>
 
         <Route path="/my-requests" element={<MyRequests />}/>
+
+        <Route path="/incoming-requests" element={<IncomingRequests />}/>
       </Routes>
 
     </BrowserRouter>

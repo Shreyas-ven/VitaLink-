@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getMyRequests }
 
 from "../services/requestService";
+import "../styles/MyRequests.css";
 
 
 const MyRequests = () => {
@@ -50,75 +51,95 @@ const MyRequests = () => {
 
     return (
 
-        <div>
+<div className="my-requests-container">
 
-            <h1>My Requests</h1>
+    <h1 className="requests-title">
+        My Organ Requests
+    </h1>
 
-            <hr />
+    {
 
+        requests.length === 0 ?
 
-            {
+        (
 
-                requests.map((request) => (
+            <p className="no-requests">
+                No organ requests found.
+            </p>
 
-                    <div key={request._id}>
+        )
 
+        :
 
-                        <h3>
+        (
 
-                            {request.organId.organName}
+            <div className="requests-grid">
 
-                        </h3>
+                {
 
+                    requests.map((request) => (
 
-                        <p>
+                        <div
+                            className="request-card"
+                            key={request._id}
+                        >
 
-                            Patient :
+                            <h3>
+                                {request.organId.organName}
+                            </h3>
 
-                            {request.patientName}
-
-                        </p>
-
-
-                        <p>
-
-                            Blood Group :
-
-                            {request.bloodGroup}
-
-                        </p>
-
-
-                        <p>
-
-                            Requested To :
-
-                            {request.donorHospitalId.hospitalName}
-
-                        </p>
+                            <p>
+                                <strong>
+                                    Patient :
+                                </strong>
+                                {" "}
+                                {request.patientName}
+                            </p>
 
 
-                        <p>
-
-                            Status :
-
-                            {request.status}
-
-                        </p>
-
-
-                        <hr />
-
-                    </div>
-
-                ))
-
-            }
+                            <p>
+                                <strong>
+                                    Blood Group :
+                                </strong>
+                                {" "}
+                                {request.bloodGroup}
+                            </p>
 
 
-        </div>
+                            <p>
+                                <strong>
+                                    Requested To :
+                                </strong>
+                                {" "}
+                                {request.donorHospitalId.hospitalName}
+                            </p>
 
-    );
+
+                            <p>
+                                <strong>
+                                    Status :
+                                </strong>
+                                {" "}
+                                <span className="status">
+                                    {request.status}
+                                </span>
+                            </p>
+
+                        </div>
+
+                    ))
+
+                }
+
+            </div>
+
+        )
+
+    }
+
+</div>
+
+);
 
 };
 
